@@ -1,5 +1,5 @@
 版本控制系统（VCS）---备份 恢复 同步 短期撤销 长期撤销 追踪修改 追踪权限 试验功能 分支和合并。
-文件历史记录 
+文件历史记录
 
 git--分布式
 http://www.ruanyifeng.com/blog/2018/10/git-internals.html
@@ -75,20 +75,16 @@ $ git reset HEAD readme.txt
 
 9远程仓库---先有一个git服务器--github
 本地git仓库和github仓库之间的传输是通过ssh加密的，需设置：
-1创建SSH Key
-1.1在用户主目录下(sshc/user),看有没有.ssh目录,有的话看有没有id_rsa和id_rsa.pub,有的话直接进行下一步，
+9.1创建SSH Key
+在用户主目录下(sshc/user),看有没有.ssh目录,有的话看有没有id_rsa和id_rsa.pub,有的话直接进行下一步，
 如果没有的话，打开gitBash-创建SSH Key:
 $ ssh-keygen -t rsa -C "you email" 然后一路回车 --.ssh目录里面有密钥对id_rsa私钥和id_rsa.pub公钥
-2登录GitHub--setting--SSH Key页面--new ssh key--title+key:id_rsa.pub内容
+9.2登录GitHub--setting--SSH Key页面--new ssh key--title+key:id_rsa.pub内容
 
-3添加远程库
+9.3添加远程库---你本地已经创建了一个Git仓库，又要在GitHub创建一个git仓库，且让这两个仓库进行远程同步
+登录github--+new repo --- 可以克隆出新的仓库/把一个已有的本地仓库与之关联--本地仓库推送到github仓库
 
-
-
-
-
-
-
-
-
-svn--集中式
+本地仓库关联github仓库
+$ git remoto add origin git@github.com:caijuanlu/gitlearn.git
+本地仓库内容推送到远程库
+$ git push -u origin master
