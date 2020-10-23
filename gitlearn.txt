@@ -1,0 +1,94 @@
+版本控制系统（VCS）---备份 恢复 同步 短期撤销 长期撤销 追踪修改 追踪权限 试验功能 分支和合并。
+文件历史记录
+
+git--分布式
+http://www.ruanyifeng.com/blog/2018/10/git-internals.html
+首先，设置一下用户名和Email,会记录时谁提交的
+$ git config user.name "用户名"
+$ git config user.email "email地址"
+$ mkdir git-demo-project
+$ cd git-demo-project
+$ git init---初始化--就是在根目录创建一个.git子目录，用来保存版本的信息。
+$ git add --all
+$ git commit -m "说明"
+$ git checkout  //切换
+$ git log
+
+https://www.liaoxuefeng.com/wiki/896043488029600
+0安装Git--设置：
+$ git config --global user.name "Your Name"
+$ git config --global user.email "Your email"
+注意--global表示这台机器上的所有git库都用这个配置
+1创建版本库
+$ mkdir learngit
+$ cd learngit
+$ pwd （显示当前目录）
+
+1.2
+初始化一个git仓库
+$ git init 
+Initialized empty Git repository in /Users/michael/learngit/.git/----learngit文件夹下多了一个（.git--
+用来跟踪管理版本库）
+
+3编写一个readme.txt--放到learngit目录下--添加到Git仓库中
+文件添加到仓库
+$ git add readme.txt 
+文件提交到仓库
+$ git commit -m"文件注释" 
+？为什么要add aommit两步呢--commit可以一次提交许多文件，所以可以add多个不同的文件
+
+4修改readme.txt---修改的内容为添加一个“world”
+//此命令告诉我们 修改了readme.txt，但还没提交
+$ git staus
+$ git diff
+$ git add readme.txt
+$ git status
+$ git commit -m"提交此次修改"
+$ git status
+
+5版本回退
+$ git log // $ git log --pretty=oneline
+回退上一个版本（HEAD:当前版本）
+$ git reset --hard HEAD^
+$ git log
+又想回来（回到未来某个某个版本）
+$ git reset --hard lo94a(commit id---可用$ git reflog查找)
+$ cat readme.txt
+
+6工作区&暂存区
+工作区：就是我们电脑文件learngit目录
+版本库：.git+state(index)暂存区+库自动创建的master分支+指向master的一个指针
+git add:把文件添加到暂存区
+git commit:把暂存区的所用内容提交到当前分支
+
+7撤销修改（包括工作区（撤销）&暂存区（撤销））
+$ git status
+手动恢复到上一版本（区别版本回退--它已经commit到仓库里，而这个还没有）
+$ git checkout --readme.txt
+可以把暂存区修改撤销，重新回到工作区；git reset 既可以回退版本，还可把暂存区修改回退到工作区
+$ git reset HEAD readme.txt
+
+8删除文件
+0直接在文件管理器删除// $ rm test.txt----导致工作区和版本库不一致，git status告诉你哪些文件删除了
+8.1要从版本库中删除$ git rm test.txt + $ git commit -m"" 
+8.2误删时 $ git checkout --test.txt 回复最新版本
+
+9远程仓库---先有一个git服务器--github
+本地git仓库和github仓库之间的传输是通过ssh加密的，需设置：
+1创建SSH Key
+1.1在用户主目录下(sshc/user),看有没有.ssh目录,有的话看有没有id_rsa和id_rsa.pub,有的话直接进行下一步，
+如果没有的话，打开gitBash-创建SSH Key:
+$ ssh-keygen -t rsa -C "you email" 然后一路回车 --.ssh目录里面有密钥对id_rsa私钥和id_rsa.pub公钥
+2登录GitHub--setting--SSH Key页面--new ssh key--title+key:id_rsa.pub内容
+
+3添加远程库
+
+
+
+
+
+
+
+
+
+svn--集中式
