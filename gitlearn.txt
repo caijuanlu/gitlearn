@@ -1,5 +1,5 @@
 版本控制系统（VCS）---备份 恢复 同步 短期撤销 长期撤销 追踪修改 追踪权限 试验功能 分支和合并。
-文件历史记录444444444444444444444444
+文件历史记录 
 
 git--分布式
 http://www.ruanyifeng.com/blog/2018/10/git-internals.html
@@ -64,7 +64,7 @@ git commit:把暂存区的所用内容提交到当前分支
 7撤销修改（包括工作区（撤销）&暂存区（撤销））
 $ git status
 手动恢复到上一版本（区别版本回退--它已经commit到仓库里，而这个还没有）
-$ git checkout --readme.txt
+$ git checkout -- readme.txt
 可以把暂存区修改撤销，重新回到工作区；git reset 既可以回退版本，还可把暂存区修改回退到工作区
 $ git reset HEAD readme.txt
 
