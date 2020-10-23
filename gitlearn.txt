@@ -85,7 +85,8 @@ $ git branch(删除后，查看branch 就只有master分支)
 $ git switch -c dev(创建&切换新dev)
 $ git switch master(切换master分支)
 10.2解决冲突--修改后再add commit
-$git log --graph(分支合并图)
+$ git log --graph --pretty=oneline --abbrev-commit(分支合并图)
+
  
 
 
