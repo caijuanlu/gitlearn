@@ -86,11 +86,7 @@ $ git switch -c dev(创建&切换新dev)
 $ git switch master(切换master分支)
 10.2解决冲突--修改后再add commit
 $git log --graph(分支合并图)
-
-冲突
-
-
-
+ 
 
 
 
