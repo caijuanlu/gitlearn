@@ -1,41 +1,25 @@
+源地址：https://www.liaoxuefeng.com/wiki/896043488029600
 版本控制系统（VCS）---备份 恢复 同步 短期撤销 长期撤销 追踪修改 追踪权限 试验功能 分支和合并。
 文件历史记录
 
-git--分布式
-http://www.ruanyifeng.com/blog/2018/10/git-internals.html
-首先，设置一下用户名和Email,会记录时谁提交的
-$ git config user.name "用户名"
-$ git config user.email "email地址"
-$ mkdir git-demo-project
-$ cd git-demo-project
-$ git init---初始化--就是在根目录创建一个.git子目录，用来保存版本的信息。
-$ git add --all
-$ git commit -m "说明"
-$ git checkout  //切换
-$ git log
-
-https://www.liaoxuefeng.com/wiki/896043488029600
-0安装Git--设置：
+git--分布式 
+1安装Git--设置：
 $ git config --global user.name "Your Name"
 $ git config --global user.email "Your email"
 注意--global表示这台机器上的所有git库都用这个配置
-1创建版本库
+2创建版本库
 $ mkdir learngit
 $ cd learngit
-$ pwd （显示当前目录）
-
-1.2
-初始化一个git仓库
+$ pwd （显示当前目录） 
+初始化一个git仓库---就是在根目录创建一个.git子目录，用来保存版本的信息
 $ git init 
 Initialized empty Git repository in /Users/michael/learngit/.git/----learngit文件夹下多了一个（.git--
 用来跟踪管理版本库）
 
 3编写一个readme.txt--放到learngit目录下--添加到Git仓库中
-文件添加到仓库
-$ git add readme.txt 
-文件提交到仓库
-$ git commit -m"文件注释" 
-？为什么要add aommit两步呢--commit可以一次提交许多文件，所以可以add多个不同的文件
+$ git add readme.txt（文件添加到仓库）
+$ git commit -m"文件注释"（文件提交到仓库）
+为什么要add aommit两步呢--commit可以一次提交许多文件，所以可以add多个不同的文件
 
 4修改readme.txt---修改的内容为添加一个“world”
 //此命令告诉我们 修改了readme.txt，但还没提交
@@ -48,12 +32,10 @@ $ git status
 
 5版本回退
 $ git log // $ git log --pretty=oneline
-回退上一个版本（HEAD:当前版本）
-$ git reset --hard HEAD^
+$ git reset --hard HEAD^（回退上一个版本（HEAD:当前版本））
 $ git log
-又想回来（回到未来某个某个版本）
-$ git reset --hard lo94a(commit id---可用$ git reflog查找)
-$ cat readme.txt
+$ git reset --hard lo94a(又想回来（回到未来某个某个版本）-- commit id---可用$ git reflog查找)
+$ cat readme.txt （查看具体内容）
 
 6工作区&暂存区
 工作区：就是我们电脑文件learngit目录
@@ -80,11 +62,40 @@ $ git reset HEAD readme.txt
 如果没有的话，打开gitBash-创建SSH Key:
 $ ssh-keygen -t rsa -C "you email" 然后一路回车 --.ssh目录里面有密钥对id_rsa私钥和id_rsa.pub公钥
 9.2登录GitHub--setting--SSH Key页面--new ssh key--title+key:id_rsa.pub内容
-
 9.3添加远程库---你本地已经创建了一个Git仓库，又要在GitHub创建一个git仓库，且让这两个仓库进行远程同步
 登录github--+new repo --- 可以克隆出新的仓库/把一个已有的本地仓库与之关联--本地仓库推送到github仓库
+$ git remote add origin git@github.com:caijuanlu/gitlearn.git（本地仓库关联github仓库）
+$ git push -u origin master（本地仓库内容推送到远程库）
+然后在本地仓库进行 add commit后
+$ git push origin master（更新）
+9.4从远程克隆--以上先有本地仓库，后有远程仓库间的关联；现在--先创建远程仓库，然后从远程仓库克隆
+先登录github--new repo--git clone git@github.com:caijuanlu/gitskills.git--cd gitskills--ls
 
-本地仓库关联github仓库
-$ git remoto add origin git@github.com:caijuanlu/gitlearn.git
-本地仓库内容推送到远程库
-$ git push -u origin master
+10分支管理--平行宇宙 -- 合并
+在主分支master上提交代码，不完整的代码影响其他人开发，所以创建一个自己的分支（创建切换删除）
+10.1创建&合并分支&删除
+$ git checkout -b dev(创建dev分支，切换dev分支(!-b:创建+切换==git branch dev + git checkout dev))
+$ git branch(查看当前分支(git branck会列出所有分支，当前分支会标一个带*号))
+然后就就可以add commit
+$ git checkout master(切回master分支)
+$ git merge dev(把dev分支的合并到master分支上)
+$ git branch -d dev(删除dev分支)
+$ git branch(删除后，查看branch 就只有master分支)
+!!!switch 新的切换分支命令
+$ git switch -c dev(创建&切换新dev)
+$ git switch master(切换master分支)
+10.2解决冲突--修改后再add commit
+$git log --graph(分支合并图)
+
+
+
+
+
+
+
+
+
+
+
+
+svn--集中式
